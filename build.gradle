@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+// choose which javafx modules you want to include
+javafx {
+    version = '15'
+    modules = [
+            'javafx.base',
+            'javafx.controls',
+            'javafx.fxml',
+            'javafx.graphics',
+            'javafx.swing'
+    ]
+}
+
+group 'io.tlf'
+version '0.0.0'
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+
+application {
+    //mainClassName = 'io.tlf.jme.test.Main'
+    mainClassName = 'io.tlf.jme.test.VRTest'
+}
+
+ext {
+
+    //Dependency Versions
+    jmeVersion = 'master-SNAPSHOT'
+    jmeGroup = "com.github.jMonkeyEngine.jmonkeyengine";
+    //jmeVersion = "3.3.2-stable"
+    //jmeGroup = "org.jmonkeyengine"
+    //jmeVersion = "3.1.0-SNAPSHOT"
+    //jmeGroup = "org.jmonkeyengine"
+}
+
+dependencies {
+    compile jmeGroup + ':jme3-core:' + jmeVersion
+    compile jmeGroup + ':jme3-desktop:' + jmeVersion
+    compile jmeGroup + ':jme3-lwjgl3:' + jmeVersion
+    compile jmeGroup + ':jme3-plugins:' + jmeVersion
+    compile jmeGroup + ':jme3-jogg:' + jmeVersion
+    compile jmeGroup + ':jme3-effects:' + jmeVersion
+    compile jmeGroup + ':jme3-vr:' + jmeVersion
+
+    compile 'org.slf4j:slf4j-simple:1.7.25' //Removes warning on load
+}
